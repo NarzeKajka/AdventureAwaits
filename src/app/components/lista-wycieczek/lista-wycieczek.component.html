@@ -1,0 +1,37 @@
+<div class="container">
+    <div *ngFor="let wycieczka of paginowaneWycieczki" class="wycieczka"
+        [ngClass]="{
+            'najtansza-wycieczka': wycieczka.cena === najnizszaCena,
+            'najdrozsza-wycieczka': wycieczka.cena === najwyzszaCena
+    }">
+        <p class="nazwa-wycieczki">{{ wycieczka.nazwa | uppercase }}</p>
+        <img [src]="'assets/pogladowe/' + wycieczka.zdjecie[0]" alt="Zdjęcie" class="img-wycieczka">
+        <p class="kraj-wycieczki">{{ wycieczka.kraj | uppercase }}</p>
+        <p class="ocena"> Ocena: {{ sredniaOcena(wycieczka.id) }}/5 (Ilość opinii: {{ iloscRecenzji(wycieczka.id) }})</p>
+        <div class="info">
+            <p class="data-wycieczki">Data: od {{ wycieczka.dataRozpoczecia }} do {{ wycieczka.dataZakonczenia }}</p>
+            <p class="cena-wycieczki">Cena:
+                {{ currencyService.przeliczCene(wycieczka.cena) | number : '1.0-2' }} {{ currencyService.pobierzSymbolWaluty() }}
+            </p>
+            <p class="ilosc-miejsc-wycieczki"
+                [ngClass]="{'malo-miejsc': getDostepneMiejsca(wycieczka) <= 3 && getDostepneMiejsca(wycieczka) > 0}">
+                Ilość dostępnych miejsc: {{ getDostepneMiejsca(wycieczka) }} z ({{ wycieczka.maxMiejsca }})
+            </p>
+            <p class="brak-miejsc" *ngIf="getDostepneMiejsca(wycieczka) === 0">Brak dostępnych miejsc!</p>
+            <div class="dodaj-usun">
+                <button (click)="dodajDoKoszyka(wycieczka)" *ngIf="getDostepneMiejsca(wycieczka) > 0">+</button>
+                <button (click)="usunZKoszyka(wycieczka)" *ngIf="getDostepneMiejsca(wycieczka) < wycieczka.dostepneMiejsca">-</button>
+            </div>
+        </div>
+        <p class="opis-wycieczki">{{ wycieczka.opisk }}</p>
+        <button id="pds" (click)="przejdzDoSzczegolow(wycieczka)">Szczegóły</button>
+        <button id="usun" (click)="usunWycieczke(wycieczka.id)">Usuń</button>
+    </div>
+</div>
+<div class="paginacja">
+    <button *ngFor="let strona of pages" 
+        (click)="zmienStrone(strona)" 
+        [class.active-page]="strona + 1 === aktualnaStrona">
+        {{ strona + 1 }}
+    </button>
+</div>

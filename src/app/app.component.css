@@ -1,0 +1,351 @@
+/*
+<main>
+  <nav>
+    <p><span class="bold">Adventure</span>Awaits</p>
+    <div class="line"></div>
+    <a routerLink="/strona-glowna">Strona główna</a>
+    <a routerLink="/wycieczki">Wycieczki</a>
+    <a routerLink="/historia-zamowien">Historia zamówień</a>
+    <div class="nav-right">
+      <select class="currency">
+        <option value="PLN">PLN</option>
+        <option value="USD">$</option>
+        <option value="EUR">€</option>
+      </select>
+      <a routerLink="/koszyk">Koszyk</a>
+      <a routerLink="/logowanie">Logowanie</a>
+    </div>
+  </nav>
+  <section class="outlet">
+    <router-outlet></router-outlet>
+  </section>
+  <footer>
+    <div class="left-side">
+      <p class="copy">AdventureAwaits &copy; 2024</p>
+      <div class="contact">
+        <p>phone: +48 123 456 789</p>
+        <p>email: AdventureAwaits.contact&#64;gmail.com</p>
+        <p>ul. Juliana Tokarskiego 10, 30-065 Kraków</p>
+      </div>
+    </div>
+    <div class="map-footer">
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.9713763808327!2d19.901692699999998!3d50.068097699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165bb94de680f1%3A0x115868dfb9b35dc7!2sMaraton%20-%20Student%20Dormitory%20(DS)%2015!5e0!3m2!1spl!2spl!4v1705351263950!5m2!1spl!2spl" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </footer>
+</main>
+*/
+
+main{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+nav{
+    width: 100%;
+    min-height: 50px;
+    z-index: 100;
+    position: staticy;
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+.nav-right{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+nav p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.currency {
+    margin-right: 8px;
+    margin-left: 8px;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+span {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+}
+
+.line {
+    border-left: 1px solid #333;
+    height: 20px;
+    margin: 0 20px;
+}
+
+nav a:hover {
+    color: #dbbeef;
+}
+
+footer{
+    width: 100%;
+    min-height: 200px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.left-side{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.copy{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contact p{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.map-footer{
+    width: 500px;
+    height: 300px;
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.currency-text{
+    margin-right: 10px;
+}
+
+.suma {
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.zielone-tlo {
+    background-color: rgb(127, 217, 127);
+    color: white;
+}
+  
+.czerwone-tlo {
+    background-color: rgb(238, 88, 88);
+    color: white;
+}
+
+/* W app.component.css */
+.cart-menu-container {
+    position: relative;
+}
+  
+.cart-dropdown {
+    position: absolute;
+    top: 100%; 
+    background-color: #fff;
+    right: 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    min-width: 180px;
+    width: max-content;
+    display: none; 
+    z-index: 1000; 
+}
+
+i {
+    margin-top: 10px;
+}
+
+.k {
+    cursor: pointer;
+}
+  
+.cart-dropdown button {
+    margin-top: 10px;
+}
+  
+.cart-menu-container:hover .cart-dropdown {
+    display: block;
+}
+
+  
+button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+
+/* responsive */
+
+@media screen and (max-width: 900px){
+    nav{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .line {
+        border-left: none;
+        border-top: 1px solid #333;
+        width: 40px;
+        height: 1px;
+        margin: 10px 0;
+    }
+
+    .map-footer{
+        width: 100%;
+        height: 300px;
+        margin: 10px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .nav-right{
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .currency {
+        margin-right: 8px;
+        padding: 5px;
+        border: 1px solid #333;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .currency-text{
+        margin-right: 0;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    span {
+        font-size: 1.2em;
+        margin-left: 0;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333;
+        margin: 0 10px;
+    }
+
+    nav a:hover {
+        color: #dbbeef;
+    }
+
+    footer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left-side{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .contact{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .contact p{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .map-footer{
+        width: 100%;
+        height: 300px;
+        margin: 10px;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .map{
+        width: 100%;
+        height: 100%;
+    }
+
+}
+

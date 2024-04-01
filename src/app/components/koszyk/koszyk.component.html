@@ -1,0 +1,30 @@
+<div class="pelny" *ngIf="koszykItems.length > 0">
+    <p id="koszyk">Koszyk</p>
+    <ul>
+      <li *ngFor="let item of koszykItems">
+        <div class="left">
+          {{ item.wycieczka.nazwa }} - Ilość: {{ item.ilosc }}, Cena za sztukę: {{ item.wycieczka.cena | number : '1.0-2' }} {{ currencyService.pobierzSymbolWaluty() }}
+          <div class="suma">
+            Suma: {{ currencyService.przeliczCene(item.wycieczka.cena * item.ilosc) | number : '1.0-2' }} {{ currencyService.pobierzSymbolWaluty() }}
+          </div>
+        </div>
+        <div class="right">
+            <div class="dodaj-usun">
+              <button (click)="dodajDoKoszyka(item)" *ngIf="mozeDodacMiejsce(item)">+</button>
+              <button (click)="usunZKoszyka(item)">-</button>
+            </div>
+          </div>
+          <input class="check" type="checkbox" [(ngModel)]="item.selected" (ngModelChange)="zmienZaznaczenie(item)" style="margin-right: 10px;">
+      </li>
+      <div class="podsumowanie">
+        <p id="suma-do-zaplaty">
+          Suma do zapłaty: {{ obliczSumeDoZaplaty() | number : '1.0-2' }} {{ currencyService.pobierzSymbolWaluty() }}
+        </p>
+        <button (click)="zakupWycieczki()">Zakup</button>
+      </div>
+    </ul>
+</div>
+<div class="pusty" *ngIf="koszykItems.length === 0">
+    <p id="i1">Koszyk jest obecnie pusty</p>
+    <p id="i2">Nic nie stoi na przeszkodzie aby go wypełnić!</p>
+</div>

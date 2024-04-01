@@ -1,0 +1,56 @@
+<main>
+  <nav>
+    <p><span class="bold">Adventure</span>Awaits</p>
+    <div class="line"></div>
+    <a routerLink="/strona-glowna">Strona główna</a>
+    <a routerLink="/wycieczki">Wycieczki</a>
+    <a routerLink="/dodaj-wycieczke">Dodaj wycieczkę</a>
+    <a routerLink="/historia-zamowien">Historia zamówień</a>
+    <div class="nav-right">
+      <p class="currency-text">Waluta:</p>
+      <select class="currency" (change)="zmienWalute($event)">
+        <option value="PLN">PLN</option>
+        <option value="USD">$</option>
+        <option value="EUR">€</option>
+      </select>
+      <div class="cart-menu-container">
+        <a class="k" (mouseover)="showCartDropdown = true">
+          <i class="material-icons" routerLink="/koszyk">shopping_cart</i>
+        </a>
+        <div class="cart-dropdown" *ngIf="showCartDropdown" (mouseleave)="showCartDropdown = false">
+          <!-- Zawartość rozwijanej listy koszyka -->
+          <div *ngFor="let item of koszykItems">
+            x{{ item.ilosc }} {{ item.wycieczka.nazwa }}
+          </div>
+          <div *ngIf="koszykItems.length === 0">
+            Koszyk jest obecnie pusty
+          </div>
+          <div class="ilosc-wycieczek">
+            Suma: {{ suma }}
+          </div>
+          <button routerLink="/koszyk">Przejdź do koszyka</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="suma"
+  [ngClass]="{'zielone-tlo': suma > 10, 'czerwone-tlo': suma <= 10}">
+    Sumaryczna ilość zarezerwowanych wycieczek: {{ suma }}
+  </div>
+  <section class="outlet">
+    <router-outlet></router-outlet>
+  </section>
+  <footer>
+    <div class="left-side">
+      <p class="copy">AdventureAwaits &copy; 2024</p>
+      <div class="contact">
+        <p>phone: +48 123 456 789</p>
+        <p>email: AdventureAwaits&#64;contact.pl</p>
+        <p>ul. Juliana Tokarskiego 10, 30-065 Kraków</p>
+      </div>
+    </div>
+    <div class="map-footer">
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.9713763808327!2d19.901692699999998!3d50.068097699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165bb94de680f1%3A0x115868dfb9b35dc7!2sMaraton%20-%20Student%20Dormitory%20(DS)%2015!5e0!3m2!1spl!2spl!4v1705351263950!5m2!1spl!2spl" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </footer>
+</main>

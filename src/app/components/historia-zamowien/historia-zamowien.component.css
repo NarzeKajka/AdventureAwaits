@@ -1,0 +1,111 @@
+/*
+<div class="niepuste" *ngIf="historia.length > 0">
+    <p id="historia">Historia zamówień</p>
+    <div class="sortowanie">
+        <p id="sortuj">Sortuj według statusu:</p>
+        <select (change)="sortuj($event)">
+            <option value="przed">Przed</option>
+            <option value="w trakcie">W Trakcie</option>
+            <option value="zakończona">Zakończona</option>
+        </select>
+    </div>
+    <ul>
+      <li *ngFor="let zamowienie of historia">
+        {{ zamowienie.wycieczka.nazwa }} - Ilość: {{ zamowienie.ilosc }}, Data zakupu: {{ zamowienie.dataZakupu | date }}, Status: {{ zamowienie.status }}
+      </li>
+    </ul>
+</div>
+<div class="puste" *ngIf="historia.length === 0">
+    <p id="i1">Brak historii zamówień</p>
+    <p id="i2">Przejdź do zakładki "Wycieczki" i rozejrzyj się za czymś dla siebie!</p>
+</div>
+*/
+
+.puste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.puste p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#i1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#i2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.niepuste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+#historia {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#sortuj {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+    width: 1000px;
+}
+
+select {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+}
+
+#powrot {
+    margin-top: 10px;
+    width: 100px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+
+.sortowanie {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}

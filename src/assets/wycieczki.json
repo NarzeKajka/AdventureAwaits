@@ -1,0 +1,105 @@
+{
+    "wycieczki":
+    [ 
+        {
+            "nazwa": "Cuda Starożytności",
+            "kraj": "Włochy",
+            "dataRozpoczecia": "2023-05-15",
+            "dataZakonczenia": "2023-05-22",
+            "cena": 2500,
+            "maxMiejsca": 20,
+            "opis": "Odkryj tajemnice Wiecznego Miasta w tygodniowej podróży po Rzymie. Zwiedzaj Koloseum, Forum Romanum, Panteon, oraz Watykan z Bazyliką Świętego Piotra i Kaplicą Sykstyńską. Wieczory pełne włoskich smaków w autentycznych lokalnych restauracjach.",
+            "zdjecie": "pogladoweRzym1.png"
+        },
+        {
+            "nazwa": "Gejzery i Fiordy",
+            "kraj": "Islandia",
+            "dataRozpoczecia": "2023-07-01",
+            "dataZakonczenia": "2023-07-10",
+            "cena": 6000,
+            "maxMiejsca": 15,
+            "opis": "Odkryj nieokiełznaną naturę Islandii w dziesięciodniowej ekspedycji. Zobacz oszałamiające gejzery, potężne wodospady Gullfoss i Dettifoss, oraz majestatyczne fiordy. Odwiedź Park Narodowy Thingvellir i zrelaksuj się w Błękitnej Lagunie.",
+            "zdjecie": "pogladoweIslandia1.png"
+        },
+        {
+            "nazwa": "Tokio w Kwiatach",
+            "kraj": "Japonia",
+            "dataRozpoczecia": "2023-04-05",
+            "dataZakonczenia": "2023-04-12",
+            "cena": 8000,
+            "maxMiejsca": 10,
+            "opis": "Przeżyj magię kwitnienia czereśni w Tokio. Zwiedzaj klasyczne ogrody, świątynie, nowoczesne dzielnice i podziwiaj Górę Fuji. Skosztuj tradycyjnych japońskich potraw w sercu Japonii.",
+            "zdjecie": "pogladoweJaponia1.png"
+        },
+        {
+            "nazwa": "Szwajcarskie Szczyty",
+            "kraj": "Szwajcaria",
+            "dataRozpoczecia": "2023-08-15",
+            "dataZakonczenia": "2023-08-22",
+            "cena": 3500,
+            "maxMiejsca": 12,
+            "opis": "Podróżuj przez malownicze szlaki Alp Szwajcarskich, odkrywając zielone doliny i górskie łąki. Podziwiaj panoramy słynnych szczytów Eiger i Matterhorn. Wieczory spędź w górskich schroniskach.",
+            "zdjecie": "pogladoweSzwajcaria1.png"
+        },
+        {
+            "nazwa": "Dzika Natura Afryki",
+            "kraj": "Kenia",
+            "dataRozpoczecia": "2023-09-10",
+            "dataZakonczenia": "2023-09-20",
+            "cena": 9000,
+            "maxMiejsca": 8,
+            "opis": "Odkryj afrykańską dzicz w Kenii na safari w rezerwacie Masai Mara. Podziwiaj Wielką Piątkę: lwa, słonia, bawoła, lamparta i nosorożca. Poznaj kulturę masajskich wojowników i zachwyć się sawanną o wschodzie i zachodzie słońca.",
+            "zdjecie": "pogladoweKenia1.png"
+        },
+        {
+            "nazwa": "Miasto Świateł",
+            "kraj": "Francja",
+            "dataRozpoczecia": "2023-06-01",
+            "dataZakonczenia": "2023-06-05",
+            "cena": 3000,
+            "maxMiejsca": 20,
+            "opis": "Zanurz się w romantyczną atmosferę Paryża, zwiedzając Wieżę Eiffla, Luwr, Katedrę Notre-Dame i zakątki Montmartre. Rozkoszuj się spacerami wzdłuż Sekwany i kolacjami w tradycyjnych bistrach.",
+            "zdjecie":"pogladoweFrancja1.png"
+        },
+        {
+            "nazwa": "Krajobrazy Północy",
+            "kraj": "Norwegia",
+            "dataRozpoczecia": "2023-07-10",
+            "dataZakonczenia": "2023-07-17",
+            "cena": 5500,
+            "maxMiejsca": 25,
+            "opis": "Odkryj majestatyczne norweskie fiordy Geiranger i Nærøyfjord, wpisane na listę światowego dziedzictwa UNESCO. Podziwiaj niesamowite krajobrazy, odwiedź kolorowe wioski rybackie i poznaj norweską kulturę.",
+            "zdjecie":"pogladoweNorwegia1.png"
+        },
+        {
+            "nazwa": "Bangkok i Wyspy",
+            "kraj": "Tajlandia",
+            "dataRozpoczecia": "2023-11-15",
+            "dataZakonczenia": "2023-11-25",
+            "cena": 4500,
+            "maxMiejsca": 16,
+            "opis": "Odkryj Tajlandię od tętniącego życiem Bangkoku do idyllicznych plaż Phuket i Ko Phi Phi. Poznaj zabytkowe świątynie, barwne rynki i lokalną gościnność. Relaksuj się i nurkuj w wodach Morza Andamańskiego.",
+            "zdjecie":"pogladoweTajlandia1.png"
+        },
+        {
+            "nazwa": "Lizbona i Porto",
+            "kraj": "Portugalia",
+            "dataRozpoczecia": "2023-09-20",
+            "dataZakonczenia": "2023-09-27",
+            "cena": 4000,
+            "maxMiejsca": 18,
+            "opis": "Odkryj uroki Portugalii, zwiedzając historyczną Lizbonę z jej zabytkowymi tramwajami i malowniczymi dzielnicami oraz urokliwe Porto ze wspaniałą architekturą i winem porto. Podróż pełna smaków, kultury i widoków.",
+            "zdjecie":"pogladowePortugalia1.png"
+        },
+        {
+            "nazwa": "Buenos Aires i Wodospady Iguazu",
+            "kraj": "Argentyna",
+            "dataRozpoczecia": "2023-03-01",
+            "dataZakonczenia": "2023-03-12",
+            "cena": 7500,
+            "maxMiejsca": 14,
+            "opis": "Odkryj Buenos Aires, świat tanga i kolorowe dzielnice, a następnie podziwiaj majestatyczne Wodospady Iguazu w Parku Narodowym Iguazú. Podróż pełna kontrastów między miejskim życiem a cudami natury.",
+            "zdjecie":"pogladoweArgentyna1.png"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+<a> Wypełnij formularz aby dodać wycieczkę </a>
+<div class="formularz" >
+    <form [formGroup]="form" (ngSubmit)="dodajWycieczke()">
+        <input formControlName="nazwa" type="text" placeholder="Nazwa wycieczki">
+        <input formControlName="kraj" type="text" placeholder="Kraj">
+        <input formControlName="dataRozpoczecia" type="date" placeholder="Data rozpoczęcia">
+        <input formControlName="dataZakonczenia" type="date" placeholder="Data zakończenia">
+        <div class="data" *ngIf="form.errors?.['dateRangeError']">
+            Data zakończenia musi być późniejsza niż data rozpoczęcia.
+        </div>
+        <input formControlName="cena" type="number" placeholder="Cena">
+        <input formControlName="maxMiejsca" type="number" placeholder="Maksymalna ilość miejsc">
+        <input formControlName="opisk" type="text" placeholder="Krótki opis">
+        <input formControlName="opisd" type="text" placeholder="Długi opis">
+        <input formControlName="zdjecie" type="text" placeholder="nazwa pliku z obrazkiem">
+        <button type="submit" *ngIf="form.valid">Dodaj Wycieczkę</button>
+    </form>
+    <button id="powrot" type="button"(click)="powrot()">Powrót</button>
+</div>

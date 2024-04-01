@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="szczegoly-wycieczki" *ngIf="wycieczka">
+    <div left-side>
+      <div id="karuzelaWycieczki" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let zdjecie of wycieczka.zdjecie; let i = index" [class.active]="i === 0">
+            <img [src]="'assets/pogladowe/' + zdjecie" class="d-block w-100" alt="Zdjęcie">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#karuzelaWycieczki" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Poprzedni</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#karuzelaWycieczki" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Następny</span>
+        </button>
+      </div>
+    </div>
+    <div right-side>
+      <p class="nazwa-wycieczki">{{ wycieczka.nazwa | uppercase }}</p>
+      <p class="kraj-wycieczki">{{ wycieczka.kraj | uppercase }}</p>
+      <p>Ocena: {{ obliczSredniaOcene() }}/5 (Ilość opinii: {{ recenzje.length }})</p>
+      <p class="cena-wycieczki"> {{ currencyService.przeliczCene(wycieczka.cena) | number : '1.0-2' }} {{ currencyService.pobierzSymbolWaluty() }}</p>
+      <p class="ilosc-miejsc-wycieczki">Ilość dostępnych miejsc: {{ getDostepneMiejsca(wycieczka) }} z ({{ wycieczka.maxMiejsca }})</p>
+      <p class="brak-miejsc" *ngIf="getDostepneMiejsca(wycieczka) === 0">Brak dostępnych miejsc!</p>
+      <div class="dodaj-usun">
+        <button class="b" (click)="dodajDoKoszyka(wycieczka)" *ngIf="getDostepneMiejsca(wycieczka) > 0">+</button>
+        <button class="b" (click)="usunZKoszyka(wycieczka)" *ngIf="getDostepneMiejsca(wycieczka) < wycieczka.dostepneMiejsca">-</button>
+      </div>
+      <p class="opis-wycieczki">{{ wycieczka.opisd }}</p>
+      <button class="powrot" (click)="powrotDoListy()">Powrót do listy wycieczek</button>
+    </div>
+  </div>
+  <div class="recenzje">
+    <div class="dod">
+      <p class="tytul">Dodaj recenzję</p>
+      <form (submit)="dodajRecenzje()">
+        <div class="nick">
+          <label for="nick"></label>
+          <input [(ngModel)]="nowaRecenzja.nick" name="nick" placeholder="Nick" required />
+        </div>
+        <div class="gwiazdki">
+          <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+            <svg *ngIf="i < rating" (click)="setRating(i + 1)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+            <svg *ngIf="i >= rating" (click)="setRating(i + 1)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+            </svg>
+          </ng-container>
+        </div>
+        <div class="tekst">
+          <label for="tekst"></label>
+          <textarea [(ngModel)]="nowaRecenzja.tekst" name="tekst" placeholder="Twoja recenzja" required></textarea>
+        </div>
+        <div class="data">
+          <label class="dataZakupu" for="dataZakupu">Data zakupu:</label>
+          <input [(ngModel)]="nowaRecenzja.dataZakupu" name="dataZakupu" type="date" />
+        </div>
+        <button class="sub" type="submit">Dodaj recenzję</button>
+      </form>
+      <div *ngFor="let blad of bledy">{{ blad }}</div>
+    </div>
+    <!-- Sekcja wyświetlania recenzji -->
+    <p class="dodane-recenzje">Recenzje</p>
+    <div class="opinia" *ngFor="let recenzja of recenzje">
+      <p class="nickRecenzji">Nick: {{ recenzja.nick }}</p>
+      <div class="gwiazdki" id="recenzja">
+        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+          <svg *ngIf="i < recenzja.gwiazdki" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          <svg *ngIf="i >= recenzja.gwiazdki" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+          </svg>
+        </ng-container>
+      </div>
+      <p class="recenzjaRecenzji">Recenzja:</p>
+      <p class="tekstRecenzji">{{ recenzja.tekst }}</p>
+      <p *ngIf="recenzja.dataZakupu">Data zakupu: {{ recenzja.dataZakupu | date }}</p>
+    </div>
+  </div>
+</div>
